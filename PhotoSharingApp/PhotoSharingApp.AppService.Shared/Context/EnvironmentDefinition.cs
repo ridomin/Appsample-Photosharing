@@ -49,8 +49,8 @@ namespace PhotoSharingApp.AppService.Shared.Context
                         // if none exist with these names.
                         DataBaseId = "photosharing-database",
                         CollectionId = "photosharing-document-data",
-                        EndpointUrl = "[Your Azure DocumentDB Endpoint URL]",
-                        AuthorizationKey = "[Your Azure DocumentDB Authorization Id]"
+                        EndpointUrl = "https://ridophotos.documents.azure.com:443/",
+                        AuthorizationKey = "poZUfiYj6kq4P0YKaw1djfxRIll9kXy494xv1JS6KW5FTm0duFinBeUX6rx8Dyf34NgtjZEIhiAPYlQISKny9w=="
                     };
                 }
 
@@ -65,7 +65,7 @@ namespace PhotoSharingApp.AppService.Shared.Context
         {
             get
             {
-                return "[Your Notification Hub's Full Shared Access Signature]";
+                return "Endpoint=sb://ridophotos.servicebus.windows.net/;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=yID9xouRNrDeLYwCuSFFzdZF0jqK4lThEfknE4bH7Fg=";
             }
         }
 
@@ -74,7 +74,7 @@ namespace PhotoSharingApp.AppService.Shared.Context
         /// </summary>
         public override string HubName
         {
-            get { return "[Your Notification Hub Name]"; }
+            get { return "ridophotos"; }
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace PhotoSharingApp.AppService.Shared.Context
         /// </summary>
         public override string InstrumentationKey
         {
-            get { return "[You App Insights Instrumentation Key]"; }
+            get { return "bdac1257-9b70-4e98-9f9d-f4230c7798f4"; }
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace PhotoSharingApp.AppService.Shared.Context
         /// </summary>
         public override string StorageAccessKey
         {
-            get { return "[Your Azure Storage access key]"; }
+            get { return "6ShD2OCBNhuoDZYKBASCrC9mQqEP7JzrkoVYNz20ptevYWrlirJ28a2s+Fk2UQWTepgQr8K6ZUa82LFiWwAyYA=="; }
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace PhotoSharingApp.AppService.Shared.Context
         /// </summary>
         public override string StorageAccountName
         {
-            get { return "[Your Azure Storage account name]"; }
+            get { return "ridophotos"; }
         }
     }
 }
