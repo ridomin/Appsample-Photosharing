@@ -1,0 +1,3 @@
+MainPackage=C:\code\Appsample-Photosharing\PhotoSharingApp\PhotoSharingApp.Universal\bin\ARM\Release\Upload\PhotoSharingApp.Universal_1.1.4.0_ARM.appx
+SymbolPackage=C:\code\Appsample-Photosharing\PhotoSharingApp\PhotoSharingApp.Universal\AppPackages\PhotoSharingApp.Universal_1.1.4.0\PhotoSharingApp.Universal_1.1.4.0_ARM.appxsym
+ResourcePack=C:\code\Appsample-Photosharing\PhotoSharingApp\PhotoSharingApp.Universal\_scale-400.appx

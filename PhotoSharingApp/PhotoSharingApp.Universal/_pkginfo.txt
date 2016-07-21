@@ -1,1 +1,1 @@
-C:\code\Appsample-Photosharing\PhotoSharingApp\PhotoSharingApp.Universal\AppPackages\PhotoSharingApp.Universal_1.1.1.0\PhotoSharingApp.Universal_1.1.1.0_x86_x64_arm.appxbundle
+C:\code\Appsample-Photosharing\PhotoSharingApp\PhotoSharingApp.Universal\AppPackages\PhotoSharingApp.Universal_1.1.4.0\PhotoSharingApp.Universal_1.1.4.0_x86_x64_arm.appxbundle
