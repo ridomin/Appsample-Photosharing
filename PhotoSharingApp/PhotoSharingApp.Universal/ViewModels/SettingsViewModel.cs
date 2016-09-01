@@ -89,7 +89,7 @@ namespace PhotoSharingApp.Universal.ViewModels
 
         private async void OnShowPrivacyPolicy()
         {
-            await Launcher.LaunchUriAsync(new Uri("http://Your_Privacy_Page.com"));
+            await Launcher.LaunchUriAsync(new Uri("https://ridophotos.azurewebsites.net/privacy"));
         }
 
         private async void OnSignOut()
