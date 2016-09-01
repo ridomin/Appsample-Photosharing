@@ -1,0 +1,3 @@
+MainPackage=C:\code\Appsample-Photosharing\PhotoSharingApp\PhotoSharingApp.Universal.Tests\bin\ARM\Debug\PhotoSharingApp.Universal.Tests_1.0.0.0_ARM_Debug.appx
+SymbolPackage=C:\code\Appsample-Photosharing\PhotoSharingApp\PhotoSharingApp.Universal.Tests\AppPackages\PhotoSharingApp.Universal.Tests_1.0.0.0_Debug_Test\PhotoSharingApp.Universal.Tests_1.0.0.0_ARM_Debug.appxsym
+ResourcePack=C:\code\Appsample-Photosharing\PhotoSharingApp\PhotoSharingApp.Universal.Tests\bin\ARM\Debug\PhotoSharingApp.Universal.Tests_1.0.0.0_scale-400.appx
