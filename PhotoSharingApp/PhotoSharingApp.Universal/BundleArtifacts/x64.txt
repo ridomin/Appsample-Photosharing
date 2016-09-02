@@ -1,2 +1,0 @@
-MainPackage=C:\code\Appsample-Photosharing\PhotoSharingApp\PhotoSharingApp.Universal\bin\x64\Release\PhotoSharingApp.Universal_1.1.2.0_x64.appx
-SymbolPackage=C:\code\Appsample-Photosharing\PhotoSharingApp\PhotoSharingApp.Universal\AppPackages\PhotoSharingApp.Universal_1.1.2.0_Test\PhotoSharingApp.Universal_1.1.2.0_x64.appxsym

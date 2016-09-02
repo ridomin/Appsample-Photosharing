@@ -200,3 +200,7 @@ FakesAssemblies/
 *.opt
 
 project.lock.json
+
+# Windows Store app package directory
+AppPackages/
+BundleArtifacts/

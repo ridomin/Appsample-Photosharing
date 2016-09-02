@@ -5,15 +5,13 @@
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
   IgnorableNamespaces="uap mp">
 
-  <Identity Name="D74E40B6-FC86-412D-8287-F8F8CF89F4D4"
-            Publisher="CN=sampleCode"
-            Version="1.0.0.0" />
+  <Identity Name="5e02377e-fcd3-48a3-9c67-5562d9cc6d1a" Publisher="CN=rmpablos" Version="1.1.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="D74E40B6-FC86-412D-8287-F8F8CF89F4D4" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>PhotoSharingApp.Universal.Tests</DisplayName>
-    <PublisherDisplayName>sampleCode</PublisherDisplayName>
+    <DisplayName>RidoPhotos.Tests</DisplayName>
+    <PublisherDisplayName>Rido Min</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   

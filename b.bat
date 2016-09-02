@@ -1,0 +1,1 @@
+"%PROGRAMFILES(X86)%\MSBuild\14.0\bin\msbuild.exe" PhotoSharingApp.sln /p:AppxBundlePlatforms="x86|x64|ARM" /p:AppxPackageDir="AppPackages" /p:AppxBundle=Always /p:configuration="release" /p:VisualStudioVersion="14.0"
