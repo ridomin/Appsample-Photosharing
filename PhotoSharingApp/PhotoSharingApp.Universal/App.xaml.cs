@@ -37,9 +37,9 @@ using Windows.Globalization;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Navigation;
-
+using Microsoft.HockeyApp;
 [assembly: InternalsVisibleTo("PhotoSharingApp.Universal.Tests")]
-
+        
 namespace PhotoSharingApp.Universal
 {
     /// <summary>
@@ -53,6 +53,7 @@ namespace PhotoSharingApp.Universal
         /// </summary>
         public App()
         {
+            HockeyClient.Current.Configure("7cc6ad02e18a4b678b6a27529cc13bb4");
             InitializeComponent();
 
             // Register for events
@@ -214,6 +215,7 @@ namespace PhotoSharingApp.Universal
         /// <param name="e">Details about the unhandled exception event.</param>
         private async void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
+            HockeyClient.Current.TrackException(e.Exception);
             e.Handled = true;
 
             var resourceLoader = ResourceLoader.GetForCurrentView();

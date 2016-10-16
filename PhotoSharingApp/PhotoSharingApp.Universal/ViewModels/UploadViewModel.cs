@@ -34,6 +34,8 @@ using PhotoSharingApp.Universal.Views;
 using Windows.Storage;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
+using Microsoft.HockeyApp;
+using Microsoft.HockeyApp.DataContracts;
 
 namespace PhotoSharingApp.Universal.ViewModels
 {
@@ -353,7 +355,7 @@ namespace PhotoSharingApp.Universal.ViewModels
                 Photo.CategoryId = Category.Id;
 
                 await _photoService.UpdatePhoto(Photo);
-
+                HockeyClient.Current.TrackEvent(new EventTelemetry("uploadPhoto"));
                 _navigationFacade.NavigateToPhotoDetailsView(Category.ToCategoryPreview(), Photo);
             }
             catch (CategoryRequiredException)

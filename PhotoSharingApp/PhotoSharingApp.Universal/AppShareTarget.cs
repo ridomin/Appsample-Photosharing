@@ -1,4 +1,5 @@
-﻿//-----------------------------------------------------------------------------------
+﻿using Microsoft.HockeyApp;
+//-----------------------------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 // 
 //  The MIT License (MIT)
@@ -21,7 +22,6 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 //  ---------------------------------------------------------------------------------
-
 using System;
 using System.Linq;
 using Microsoft.Practices.ServiceLocation;
@@ -48,16 +48,12 @@ namespace PhotoSharingApp.Universal
         private Frame GetOrCreateRootFrame()
         {
             var rootFrame = Window.Current.Content as Frame;
-
             if (rootFrame == null)
             {
                 rootFrame = new Frame();
-
                 // Set the default language
                 rootFrame.Language = ApplicationLanguages.Languages[0];
-
                 rootFrame.NavigationFailed += OnNavigationFailed;
-
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
             }
@@ -68,12 +64,11 @@ namespace PhotoSharingApp.Universal
         /// <summary>
         /// Invoked when the application is activated through sharing association.
         /// </summary>
-        /// <param name="args">Event data for the event.</param>
+        /// <param name = "args">Event data for the event.</param>
         protected override async void OnShareTargetActivated(ShareTargetActivatedEventArgs args)
         {
             IAppEnvironment mainAppEnvironment = null;
             IUploadFinishedHandler mainUploadFinishedHandler = null;
-
             if (UnityBootstrapper.Container != null)
             {
                 // We need to save the app environment from the current app.
@@ -88,56 +83,47 @@ namespace PhotoSharingApp.Universal
             }
 
             // Overwrite existing app environment instance.
-            UnityBootstrapper.Container.RegisterInstance(typeof(IAppEnvironment), new AppEnvironment());
-
+            UnityBootstrapper.Container.RegisterInstance(typeof (IAppEnvironment), new AppEnvironment());
             // Do initializations, trying restoring current user into the
             // provided app environment.
             await AppInitialization.DoInitializations();
-
             // Overwrite existing upload finished handler to make sure, the app
             // does not navigate to the categories page after successful upload,
             // but closes the share target window instead.
-            var uploadFinishedHandler =
-                new ShareTargetUploadFinishedHandler(() =>
+            var uploadFinishedHandler = new ShareTargetUploadFinishedHandler(() =>
+            {
+                // Restore original app environment.
+                if (mainAppEnvironment != null)
                 {
-                    // Restore original app environment.
-                    if (mainAppEnvironment != null)
-                    {
-                        UnityBootstrapper.Container.RegisterInstance(typeof(IAppEnvironment), mainAppEnvironment);
-                    }
+                    UnityBootstrapper.Container.RegisterInstance(typeof (IAppEnvironment), mainAppEnvironment);
+                }
 
-                    // Restore original upload finished handler.
-                    if (mainUploadFinishedHandler != null)
-                    {
-                        var uploadFinishedHandlerType = mainUploadFinishedHandler.GetType();
-                        UnityBootstrapper.Container.RegisterType(typeof(IUploadFinishedHandler),
-                            uploadFinishedHandlerType);
-                    }
+                // Restore original upload finished handler.
+                if (mainUploadFinishedHandler != null)
+                {
+                    var uploadFinishedHandlerType = mainUploadFinishedHandler.GetType();
+                    UnityBootstrapper.Container.RegisterType(typeof (IUploadFinishedHandler), uploadFinishedHandlerType);
+                }
 
-                    args.ShareOperation.ReportCompleted();
-                });
+                args.ShareOperation.ReportCompleted();
+            }
 
-            UnityBootstrapper.Container.RegisterInstance(typeof(IUploadFinishedHandler), uploadFinishedHandler);
-
+            );
+            UnityBootstrapper.Container.RegisterInstance(typeof (IUploadFinishedHandler), uploadFinishedHandler);
             // Access data that has been shared.
             var data = args.ShareOperation.Data;
-
             if (data.Contains(StandardDataFormats.StorageItems))
             {
                 try
                 {
                     var items = await data.GetStorageItemsAsync();
-
                     // We expect the shared data to be a StorageFile.
                     var file = items.FirstOrDefault() as StorageFile;
-
                     if (file != null)
                     {
                         GetOrCreateRootFrame();
-
                         var navigationFacade = ServiceLocator.Current.GetInstance<INavigationFacade>();
                         navigationFacade.NavigateToCropView(file);
-
                         Window.Current.Activate();
                     }
                 }

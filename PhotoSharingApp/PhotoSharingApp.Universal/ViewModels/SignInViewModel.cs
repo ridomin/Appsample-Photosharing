@@ -30,6 +30,7 @@ using PhotoSharingApp.Universal.Facades;
 using PhotoSharingApp.Universal.Services;
 using PhotoSharingApp.Universal.Views;
 using Windows.ApplicationModel.Resources;
+using Microsoft.HockeyApp;
 
 namespace PhotoSharingApp.Universal.ViewModels
 {
@@ -99,23 +100,26 @@ namespace PhotoSharingApp.Universal.ViewModels
             try
             {
                 await _photoService.SignInAsync(authenticationProviderProvider);
-
+                HockeyClient.Current.TrackMetric("SignIn", 0);
                 if (RedirectToProfilePage)
                 {
                     _navigationFacade.NavigateToProfileView();
                     _navigationFacade.RemoveBackStackFrames(1);
                 }
             }
-            catch (AuthenticationException)
+            catch (AuthenticationException e)
             {
+                HockeyClient.Current.TrackException(e);
                 await _dialogService.ShowNotification("AuthenticationFailed_Message", "AuthenticationFailed_Title");
             }
-            catch (AuthenticationCanceledException)
+            catch (AuthenticationCanceledException e)
             {
+                HockeyClient.Current.TrackException(e);
                 // User canceled, do nothing in this case.
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                HockeyClient.Current.TrackException(e);
                 await _dialogService.ShowNotification("GenericError_Title", "GenericError_Message");
             }
         }

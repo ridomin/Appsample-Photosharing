@@ -22,6 +22,7 @@
     <PackageCertificateThumbprint>7A3AC93E03F48BCCF4FEB3D332A3F403E5573913</PackageCertificateThumbprint>
     <PackageCertificateKeyFile>PhotoSharingApp.Universal_StoreKey.pfx</PackageCertificateKeyFile>
     <AppxBundle>Always</AppxBundle>
+    <HockeyAppResourceId>7cc6ad02e18a4b678b6a27529cc13bb4</HockeyAppResourceId>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
@@ -175,6 +176,7 @@
     <Content Include="Store\Simulation\app-listing.xml" />
     <None Include="PhotoSharingApp.Universal_StoreKey.pfx" />
     <None Include="project.json" />
+    <None Include="Service References\HockeyApp\ConnectedService.json" />
     <PRIResource Include="Strings\en\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
@@ -583,6 +585,9 @@
       <Project>{f2be2125-5344-4f5c-bf06-87e0455c5af9}</Project>
       <Name>PhotoSharingApp.Portable</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
