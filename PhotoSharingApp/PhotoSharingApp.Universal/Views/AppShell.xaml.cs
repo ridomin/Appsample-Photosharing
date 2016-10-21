@@ -39,6 +39,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.HockeyApp;
 
 namespace PhotoSharingApp.Universal.Views
 {
@@ -58,6 +59,7 @@ namespace PhotoSharingApp.Universal.Views
         public AppShell()
         {
             InitializeComponent();
+            HockeyClient.Current.TrackPageView("Shell");
 
             // Set the data context
             _viewModel = new AppShellViewModel();

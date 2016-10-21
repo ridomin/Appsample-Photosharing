@@ -22,6 +22,7 @@
 //  THE SOFTWARE.
 //  ---------------------------------------------------------------------------------
 
+using Microsoft.HockeyApp;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Windows.UI.Xaml.Controls;
@@ -33,6 +34,10 @@ namespace PhotoSharingApp.Universal.Views
     /// </summary>
     public class BasePage : Page, INotifyPropertyChanged
     {
+        public BasePage()
+        {
+            HockeyClient.Current.TrackPageView(this.GetType().ToString());
+        }
         /// <summary>
         /// Notifies that the property has changed.
         /// </summary>
